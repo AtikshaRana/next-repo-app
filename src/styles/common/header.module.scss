@@ -1,0 +1,138 @@
+.topWrap {
+    margin-top: 137px;
+}
+.header {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    background: black;
+    z-index: 99;
+
+    .topNav {
+        border-bottom: 1px solid #333333;
+    }
+
+   
+
+    .arrow {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: auto;
+            left: auto;
+            right: -20px;
+            margin-top: 6px;
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: rotate(313deg);
+        }
+    }
+
+    .dropDown {
+        position: relative;
+        width: auto;
+        height: auto;
+        left: -27px;
+    }
+
+    .logoWrap {
+        // position: relative;
+        padding-bottom: 20px;
+    }
+
+    .borderLeft {
+        position: relative;
+        border-left: 1px solid #333333;
+        margin-left: 15px;
+        margin-right: 10px;
+    }
+
+    .innerWrap {
+        position: absolute;
+        visibility: hidden;
+        width: fit-content;
+        top: auto;
+        margin-top: 20px;
+        left: 0;
+        background-color: #fff;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .langWrap {
+        position: relative;
+        padding-bottom: 6px;
+    }
+
+    .langDrop {
+        position: absolute;
+        visibility: hidden;
+        width: fit-content;
+        top: auto;
+        margin-top: 5px;
+        left: 15px;
+        background-color: #fff;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    .langlistActive {
+        .langDrop {
+            visibility: visible;
+        }
+    }
+
+    .langLink:hover {
+        background-color: rgba(51, 51, 51, 0.2);
+    }
+
+    .linkStyle:hover {
+        text-decoration: underline;
+    }
+
+    .listActive {
+        background-color: #333333;
+
+        .arrow {
+            &::after {
+                display: none;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: auto;
+                left: auto;
+                right: -20px;
+                margin-top: 10px;
+                width: 10px;
+                height: 10px;
+                border-left: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+                transform: rotate(132deg);
+            }
+        }
+
+        .innerWrap {
+            visibility: visible;
+        }
+    }
+
+    .title {
+        color: #5F60FF;
+    }
+
+    .sideLinks {
+        margin-left: 50px;
+        padding-left: 40px;
+        min-width: 180px;
+        border-left: 1px solid rgba(151, 142, 142, 0.7);
+    }
+}

@@ -1,0 +1,28 @@
+
+.subheading{
+    color: rgb(255, 194, 26);
+    font-weight: 700;
+}
+.mainheading{
+    font-weight: 800;
+    font-size: 56px;
+    @media (max-width: 1024px) {
+        font-weight: 600;
+        font-size: 36px;
+    }
+}
+.description{
+    font-weight: 400;
+    line-height: 1.5;
+}
+.videoContainer{
+    position: absolute;
+    top: 0;
+    right: -220px;
+    width: 810.4px;
+    height: 100%;
+    @media (max-width: 1024px) {
+        position: relative;
+        right: 0;
+    }
+}
