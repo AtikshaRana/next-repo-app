@@ -33,7 +33,7 @@ export default function Cardslider({ data }) {
   };
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
@@ -105,7 +105,7 @@ export default function Cardslider({ data }) {
             ))}
           </Slider>
         </div>
-        <button className={` mr-4 ${Styles.prevBtn}`} onClick={handlePrev}>
+        <button className={`mr-4 ${Styles.prevBtn}`} onClick={handlePrev}>
           Previous
         </button>
         <button className={Styles.nextBtn} onClick={handleNext}>
