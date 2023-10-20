@@ -1,8 +1,9 @@
 .logoWrap{
     width: 20%;
-    display: flex;
+    display: flex !important;
     opacity: 1;
     padding: 10px;
+    height: 90px;
     align-items: center;
     justify-content: center;
 }
