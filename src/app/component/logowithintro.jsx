@@ -46,7 +46,6 @@ export default function Logowithintro({ data }) {
     slidesToScroll: 1,
     initialSlide: 0,
   };
-
   return (
     <section className='logoWithCOntent md:pb-0'>
       <div className="container">

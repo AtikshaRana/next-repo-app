@@ -9,11 +9,9 @@ function Tab({ data }) {
   const [activeTab, setActiveTab] = useState(0);
   const [liHeights, setLiHeights] = useState([]);
   const [top, setTop] = useState([]);
-  // console.log(data);
   const ulRef = useRef(null);
 
   useEffect(() => {
-    // Calculate and store the heights of all list items when the component mounts
     if (ulRef.current) {
       const listItems = ulRef.current.querySelectorAll('li');
       const heights = Array.from(listItems).map((li) => li.clientHeight);
@@ -30,6 +28,54 @@ function Tab({ data }) {
     height: liHeights[activeTab] || 'auto',
     top: `${top}px` || 'auto',
   };
+  const [sectionTop, setSectionTop] = useState(0);
+  const [sectionHeight, setSectionHeight] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementsByClassName('tab-with-content')[0];
+    if (section) {
+      const sectionPosition = section.getBoundingClientRect();
+      const newSectionHeight = sectionPosition.y;
+      const top = sectionPosition.top;
+
+      setSectionTop(top);
+      setSectionHeight(newSectionHeight);
+
+      if (window.scrollY > 0) {
+        console.log(sectionTop);
+      }
+
+      if (sectionHeight < 124) {
+        console.log("djhnka");
+        setActiveTab(0);
+        setTop(0 * liHeights[activeTab] + (0 * 8));
+      } else if (sectionHeight > 124 && sectionHeight < 248) {
+        setActiveTab(1);
+        setTop(1 * liHeights[activeTab] + (1 * 8));
+      } else if (sectionHeight > 248 && sectionHeight < 372) {
+        setActiveTab(2);
+        setTop(2 * liHeights[activeTab] + (2 * 8));
+      }else if (sectionHeight > 372 && sectionHeight < 496) {
+        setActiveTab(3);
+        setTop(3 * liHeights[activeTab] + (3 * 8));
+      }else if (sectionHeight > 496 && sectionHeight < 520) {
+        setActiveTab(4);
+        setTop(4 * liHeights[activeTab] + (4 * 8));
+      }
+      console.log(sectionPosition);
+      console.log(sectionHeight);
+    };
+
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [sectionTop]);
+
+
+
 
   return (
     <section className="tab-with-content">
