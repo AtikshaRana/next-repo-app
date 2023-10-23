@@ -173,6 +173,7 @@ a{
 
 .tab-with-content{
   background: #fff;
+  overflow: hidden;
 }
 .tab-with-content h2{
   text-align: center;

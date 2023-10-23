@@ -14,7 +14,6 @@ function Tab({ data }) {
   const [liHeights, setLiHeights] = useState([]);
   const [top, setTop] = useState([]);
   const ulRef = useRef(null);
-
   useEffect(() => {
     if (ulRef.current) {
       const listItems = ulRef.current.querySelectorAll('li');
@@ -30,11 +29,24 @@ function Tab({ data }) {
             if (index > 0) {
               setActiveTab(index - 1);
             }
-          },  
+          },
+          markers: true, // Enable markers for debugging
         });
+      });
+
+      // Create a ScrollTrigger for the entire section
+      const section = document.querySelector('.tab-with-content');
+      const sectionEnd = section.offsetTop + section.offsetHeight;
+      
+      ScrollTrigger.create({
+        trigger: '.tab-with-content',
+        start: '10% 10%',
+        end: `+=${sectionEnd}px`, // Adjust as needed
+        markers: true, // Enable markers for debugging
       });
     }
   }, []);
+
   useEffect(() => {
     if (ulRef.current) {
       const listItems = ulRef.current.querySelectorAll('li');
