@@ -247,6 +247,14 @@ a{
 .tab-with-content .tab-content{
   position: relative;
   right: 0;
+  visibility: hidden;
+  height: 0;
+}
+.tab-with-content .tab-content.active{
+  height: auto;
+  top: 0;
+  right: 0;
+  visibility: visible;
 }
 .tab-with-content ul{
     flex: none;
