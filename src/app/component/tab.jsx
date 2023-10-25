@@ -14,34 +14,42 @@ function Tab({ data }) {
   const [liHeights, setLiHeights] = useState([]);
   const [top, setTop] = useState([]);
   const ulRef = useRef(null);
+  function disableScroll() {
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = 'vh-100';
+  }
+  function enableScroll() {
+    document.body.style.overflow = 'auto';
+  }
+
   useEffect(() => {
     if (ulRef.current) {
       const listItems = ulRef.current.querySelectorAll('li');
-      listItems.forEach((li, index) => {
-        ScrollTrigger.create({
-          trigger: li,
-          start: 'top center',
-          end: 'bottom center',
-          onEnter: () => {
-            setActiveTab(index);
-          },
-          onLeaveBack: () => {
-            if (index > 0) {
-              setActiveTab(index - 1);
-            }
-          },
-          markers: true, // Enable markers for debugging
-        });
-      });
+      // listItems.forEach((li, index) => {
+      //   ScrollTrigger.create({
+      //     trigger: li,
+      //     start: 'top center',
+      //     end: 'bottom center',
+      //     onEnter: () => {
+      //       setActiveTab(index);
+      //     },
+      //     onLeaveBack: () => {
+      //       if (index > 0) {
+      //         setActiveTab(index - 1);
+      //       }
+      //     },
+      //     markers: true, // Enable markers for debugging
+      //   });
+      // });
 
       // Create a ScrollTrigger for the entire section
       const section = document.querySelector('.tab-with-content');
       const sectionEnd = section.offsetTop + section.offsetHeight;
       
       ScrollTrigger.create({
-        trigger: '.tab-with-content',
-        start: '10% 10%',
-        end: `+=${sectionEnd}px`, // Adjust as needed
+        trigger: '.tab-with-content .container',
+        pin: true,
+        start: "top-=200px", // Adjust as needed
         markers: true, // Enable markers for debugging
       });
     }
@@ -79,27 +87,20 @@ function Tab({ data }) {
   //     if (window.scrollY > 0) {
   //       console.log(sectionTop);
   //     }
-  //     if (sectionHeight < 124) {
+  //     if (sectionHeight < 334) {
   //       console.log("djhnka");
   //       setActiveTab(0);
   //       setTop(0 * liHeights[activeTab] + (0 * 8));
-  //     } else if (sectionHeight > 124 && sectionHeight < 248) {
-  //       setActiveTab(1);
-  //       setTop(1 * liHeights[activeTab] + (1 * 8));
-  //     } else if (sectionHeight > 248 && sectionHeight < 372) {
-  //       setActiveTab(2);
-  //       setTop(2 * liHeights[activeTab] + (2 * 8));
-  //     }else if (sectionHeight > 372 && sectionHeight < 496) {
-  //       setActiveTab(3);
-  //       setTop(3 * liHeights[activeTab] + (3 * 8));
-  //     }else if (sectionHeight > 496 && sectionHeight < 520) {
+  //       disableScroll();
+  //     } 
+  //     else if (sectionHeight > 496 && sectionHeight < 520) {
   //       setActiveTab(4);
   //       setTop(4 * liHeights[activeTab] + (4 * 8));
+  //       enableScroll();
   //     }
   //     console.log(sectionPosition);
   //     console.log(sectionHeight);
   //   };
-
   //   };
   //   window.addEventListener('scroll', handleScroll);
   //   return () => {

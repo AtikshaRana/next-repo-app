@@ -1,4 +1,5 @@
 
+"use client";
 import Image from 'next/image';
 import Tab from './component/tab';
 // import bannerData from "../app/component/bannerData.json"
@@ -10,9 +11,18 @@ import Coltwo from './component/col-two';
 import Cardslider from './component/card-slider';
 import Footercta from './component/footer-cta';
 import Dummy from './component/dummy';
+import { useEffect } from 'react';
 // import Slider from './component/slider';
 
 export default async function Home() {
+  useEffect( () => {
+    (
+      async () => {
+          const LocomotiveScroll = (await import('locomotive-scroll')).default
+          const locomotiveScroll = new LocomotiveScroll();
+      }
+    )()
+  }, [])
   const response = await fetch("https://construction.autodesk.com/page-data/index/page-data.json");
   const data = await response.json()
   const footer = data.result.data.bottomNav.content;
@@ -25,6 +35,7 @@ export default async function Home() {
   // const logoData = pageContent.filter((data) => data.component === "customerLogosModule");
   // const intro = pageContent.filter((data) => data.component === "titleSubtitleDescriptionModule");
   // const lifecycle = pageContent.filter((data) => data.component === "lifecycleModule");
+  
 
   return (
     <div>
